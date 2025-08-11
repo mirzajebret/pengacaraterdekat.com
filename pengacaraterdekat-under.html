@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>pengacaraterdekat.com — Sedang Dalam Pengembangan</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <style>
+    /* Neon code background */
+    .code-bg {
+      background: linear-gradient(180deg, rgba(8,10,12,0.6), rgba(6,7,9,0.9)), url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="800"><rect width="100%" height="100%" fill="%23040D12"/></svg>') center/cover no-repeat;
+      mix-blend-mode: multiply;
+    }
+
+    .glow-text {
+      text-shadow: 0 2px 8px rgba(99,102,241,0.18), 0 0 20px rgba(99,102,241,0.12);
+    }
+
+    /* Animated pseudo-code lines */
+    .pseudo-code { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, 'Roboto Mono', 'Courier New', monospace; }
+    .line { opacity: 0.07; transform: translateX(-12px); animation: slideIn 1.2s ease forwards; }
+    .line:nth-child(1){ animation-delay: .2s }
+    .line:nth-child(2){ animation-delay: .35s }
+    .line:nth-child(3){ animation-delay: .5s }
+    .line:nth-child(4){ animation-delay: .65s }
+    .line:nth-child(5){ animation-delay: .8s }
+
+    @keyframes slideIn {
+      to { opacity: 1; transform: translateX(0); }
+    }
+
+    /* subtle floating legal icons */
+    .float-anim { animation: float 6s ease-in-out infinite; }
+    @keyframes float { 0%,100%{ transform: translateY(0)} 50%{ transform: translateY(-8px)} }
+
+    /* responsive card */
+    .glass { backdrop-filter: blur(6px); background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.06); }
+
+    /* button focus */
+    .btn:focus { outline: 2px solid rgba(99,102,241,0.3); }
+  </style>
+</head>
+<body class="min-h-screen flex items-center justify-center bg-gray-900 text-gray-100">
+  <main class="container mx-auto px-6 py-16 max-w-6xl">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+
+      <!-- Left: Message -->
+      <section class="p-8 glass rounded-2xl shadow-2xl">
+        <div class="flex items-center gap-4">
+          <!-- logo-ish */ -->
+          <div class="w-14 h-14 rounded-lg bg-gradient-to-br from-indigo-600 to-sky-400 flex items-center justify-center shadow-md">
+            <!-- scales icon -->
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M15 3L21 9" stroke="white" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M7 9L11 3" stroke="white" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <div>
+            <h1 class="text-2xl lg:text-3xl font-bold">pengacaraterdekat.com</h1>
+            <p class="text-sm text-gray-300">Website sedang dalam pengembangan — segera hadir membantu cari pengacara terdekat.</p>
+          </div>
+        </div>
+
+        <div class="mt-8">
+          <h2 class="text-3xl lg:text-4xl font-extrabold glow-text">Website Sedang Dalam Pengembangan</h2>
+          <p class="mt-4 text-gray-300">Kami sedang membangun pengalaman terbaik untuk menemukan pengacara profesional di area Anda. Sementara itu, Anda bisa menghubungi kami melalui kontak di bawah atau tinggalkan email untuk notifikasi peluncuran.</p>
+
+          <form class="mt-6 flex flex-col sm:flex-row gap-3" onsubmit="event.preventDefault(); alert('Terima kasih — notifikasi akan dikirim saat website live.');">
+            <input aria-label="alamat email" type="email" required placeholder="email@contoh.com" class="flex-1 rounded-md px-4 py-3 bg-gray-800 placeholder-gray-400 border border-gray-700 focus:border-indigo-400" />
+            <button class="btn rounded-md px-5 py-3 bg-indigo-600 hover:bg-indigo-500 font-semibold">Beritahu Saya</button>
+          </form>
+
+          <div class="mt-6 flex items-center gap-3 text-sm text-gray-400">
+            <svg class="w-5 h-5 text-gray-400" viewBox="0 0 24 24" fill="none"><path d="M21 8v6a2 2 0 0 1-2 2h-3l-2 3v-3H10l-2-3H5a2 2 0 0 1-2-2V8" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span>Butuh bantuan cepat? Hubungi: <a href="tel:+628123456789" class="text-indigo-300 hover:underline">+62 812-3456-789</a></span>
+          </div>
+
+          <div class="mt-6 text-xs text-gray-500">Ingin memesan layanan atau konsultasi sekarang? Tinggalkan pesan di <a href="mailto:hello@pengacaraterdekat.com" class="text-indigo-300 hover:underline">hello@pengacaraterdekat.com</a></div>
+        </div>
+
+        <div class="mt-8 flex gap-4">
+          <div class="p-3 rounded-md bg-gray-800 text-gray-200 text-xs">Domain: <strong>pengacaraterdekat.com</strong></div>
+          <div class="p-3 rounded-md bg-gray-800 text-gray-200 text-xs">Status: <strong>Under construction</strong></div>
+        </div>
+      </section>
+
+      <!-- Right: Coding & Law Visual -->
+      <aside class="relative p-6 rounded-2xl code-bg overflow-hidden" aria-hidden="true">
+        <div class="absolute inset-0 bg-gradient-to-br from-transparent via-indigo-900/40 to-transparent"></div>
+
+        <div class="relative z-10 flex flex-col gap-4">
+          <div class="rounded-lg p-4 bg-gradient-to-br from-gray-800/60 to-gray-900/50 border border-gray-700">
+            <div class="flex items-center justify-between">
+              <div class="flex items-center gap-3">
+                <span class="w-3 h-3 bg-red-500 rounded-full"></span>
+                <span class="w-3 h-3 bg-yellow-400 rounded-full"></span>
+                <span class="w-3 h-3 bg-green-400 rounded-full"></span>
+                <span class="ml-3 text-xs text-gray-400">preview: /home/index.html</span>
+              </div>
+              <div class="text-xs text-gray-400">v0.3-beta</div>
+            </div>
+
+            <pre class="mt-3 text-sm pseudo-code text-gray-200 leading-6"><code>
+<span class="line text-indigo-300">// building: pengacaraterdekat.com</span>
+<span class="line text-gray-300">const service = ['konsultasi', 'pendaftaran', 'pemeriksaan berkas']</span>
+<span class="line text-emerald-300">function findLawyer(area) {</span>
+<span class="line text-gray-300">  // TODO: geolocation + rekomendasi</span>
+<span class="line text-amber-300">  return search(area)</span>
+<span class="line text-rose-300">}</span>
+</code></pre>
+          </div>
+
+          <div class="flex gap-4 items-center">
+            <div class="w-20 h-20 rounded-lg bg-gradient-to-br from-slate-800/60 to-slate-900/50 flex items-center justify-center glass">
+              <!-- small gavel SVG -->
+              <svg class="w-10 h-10" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M14 3l7 7" stroke="white" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" />
+                <path d="M7 17l-4 4" stroke="white" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" />
+                <path d="M15 8l-8 8" stroke="white" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </div>
+
+            <div class="flex-1 text-gray-300 text-sm">
+              <div class="font-medium">Teknologi</div>
+              <div class="mt-1">HTML • CSS • JavaScript • Pencarian lokasi • Integrasi chat</div>
+            </div>
+          </div>
+
+          <div class="mt-6 flex gap-3 items-center">
+            <div class="text-xs text-gray-400">Ikuti perkembangan:</div>
+            <a class="px-3 py-1 rounded-md text-xs bg-gray-800/60 hover:bg-gray-800 text-indigo-300" href="#">Twitter</a>
+            <a class="px-3 py-1 rounded-md text-xs bg-gray-800/60 hover:bg-gray-800 text-indigo-300" href="#">LinkedIn</a>
+          </div>
+        </div>
+
+        <!-- floating scales SVG -->
+        <svg class="absolute -right-8 -top-6 w-48 h-48 opacity-10 float-anim" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M32 4v8" stroke="#A78BFA" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M20 20l-4 14h32l-4-14" stroke="#A78BFA" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </aside>
+
+    </div>
+
+    <footer class="mt-12 text-center text-xs text-gray-500">© <strong>pengacaraterdekat.com</strong> — Under construction. Dibuat dengan ❤️ untuk membantu mencari pengacara yang tepat.</footer>
+  </main>
+</body>
+</html>
