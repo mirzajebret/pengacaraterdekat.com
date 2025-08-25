@@ -1,380 +1,347 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Pengacaraterdekat.com Indonesia</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PENGACARATERDEKAT.COM.COM | Solusi Hukum Profesional</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700;900&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
     <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            colors: {
-              'brand-blue': '#0a2342',
-              'brand-blue-light': '#1e3a5f',
-            },
-            fontFamily: {
-              sans: ['Lato', 'sans-serif'],
-              serif: ['Merriweather', 'serif'],
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'primary': '#1a1a1a',
+                        'secondary': '#c5a76f',
+                        'background': '#ffffff',
+                        'surface': '#f8f8f8',
+                        'text-primary': '#2d2d2d',
+                        'text-secondary': '#555555',
+                    },
+                    fontFamily: {
+                        'sans': ['Montserrat', 'sans-serif'],
+                        'serif': ['Playfair Display', 'serif'],
+                    }
+                }
             }
-          }
         }
-      }
     </script>
     <style>
-      /* Simple focus state for accessibility */
-      *:focus-visible {
-        outline: 2px solid #3b82f6;
-        outline-offset: 2px;
-      }
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .underline-gold {
+            position: relative;
+            display: inline-block;
+        }
+        .underline-gold::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 2px;
+            background-color: #c5a76f;
+        }
     </style>
-  </head>
-  <body class="bg-white font-sans">
-    
+</head>
+<body class="bg-background text-text-primary font-sans">
+
     <!-- Header -->
-    <header class="bg-brand-blue text-white shadow-md sticky top-0 z-50">
-      <div class="container mx-auto px-6 py-4 flex justify-between items-center">
-        <div class="text-2xl font-bold font-serif">
-          <a href="/">Pengacaraterdekat.com</a>
+    <header id="header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+        <div class="bg-primary/80 text-white/80 text-xs py-1">
+            <div class="container mx-auto px-6 flex justify-between items-center">
+                <div class="flex items-center gap-4">
+                    <a href="mailto:info@PENGACARATERDEKAT.COM" class="hover:text-secondary transition-colors"><i class="fas fa-envelope mr-1"></i> info@PENGACARATERDEKAT.COM</a>
+                    <span class="hidden md:inline"><i class="fas fa-map-marker-alt mr-1"></i> Jakarta, Indonesia</span>
+                </div>
+                <div class="flex items-center gap-3">
+                    <a href="#" class="hover:text-secondary transition-colors"><i class="fab fa-linkedin"></i></a>
+                    <a href="#" class="hover:text-secondary transition-colors"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
         </div>
-
-        <nav class="hidden md:flex items-center space-x-8">
-          <a href="/" class="hover:text-gray-300 transition-colors duration-200">Home</a>
-          <a href="/layanan.html" class="hover:text-gray-300 transition-colors duration-200">Services</a>
-          <a href="#" class="hover:text-gray-300 transition-colors duration-200">About Us</a>
-          <a href="#" class="hover:text-gray-300 transition-colors duration-200">Contact</a>
+        <nav class="w-full bg-white/95 shadow-md backdrop-blur-lg">
+            <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+                <a href="#home" class="text-2xl font-serif font-bold text-primary">PENGACARATERDEKAT.COM.COM</a>
+                <div class="hidden lg:flex items-center space-x-8 text-sm font-medium">
+                    <a href="#about" class="hover:text-secondary transition-colors">Tentang Kami</a>
+                    <a href="#practice-areas" class="hover:text-secondary transition-colors">Area Praktik</a>
+                    <a href="#team" class="hover:text-secondary transition-colors">Tim Kami</a>
+                    <a href="#contact" class="hover:text-secondary transition-colors">Kontak</a>
+                </div>
+                <button id="mobile-menu-button" class="lg:hidden text-primary focus:outline-none">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
         </nav>
-
-        <div class="flex items-center space-x-6">
-          <div class="hidden lg:flex items-center space-x-6 text-sm">
-            <a href="tel:+622155550123" class="flex items-center hover:text-gray-300">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-              </svg>
-              +62 21 5555 0123
-            </a>
-            <a href="mailto:info@Pengacaraterdekat.com.id" class="flex items-center hover:text-gray-300">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-              </svg>
-              info@Pengacaraterdekat.com.id
-            </a>
-          </div>
-
-          <div class="flex items-center bg-brand-blue-light rounded-full p-0.5 text-sm">
-            <button id="lang-id" class="px-3 py-1 rounded-full transition-colors duration-200 text-white" aria-label="Switch to Indonesian">
-              ID
-            </button>
-            <button id="lang-en" class="px-3 py-1 rounded-full transition-colors duration-200 bg-white text-brand-blue" aria-label="Switch to English">
-              EN
-            </button>
-          </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden lg:hidden bg-white shadow-xl">
+            <a href="#about" class="block py-3 px-6 text-sm hover:bg-surface hover:text-secondary">Tentang Kami</a>
+            <a href="#practice-areas" class="block py-3 px-6 text-sm hover:bg-surface hover:text-secondary">Area Praktik</a>
+            <a href="#team" class="block py-3 px-6 text-sm hover:bg-surface hover:text-secondary">Tim Kami</a>
+            <a href="#contact" class="block py-3 px-6 text-sm hover:bg-surface hover:text-secondary">Kontak</a>
         </div>
-      </div>
     </header>
 
-    <!-- Main Content -->
     <main>
         <!-- Hero Section -->
-        <section class="relative h-[calc(100vh-68px)] min-h-[600px] flex items-center text-brand-blue">
-            <div
-                class="absolute inset-0 bg-cover bg-center z-0"
-                style="background-image: url('https://images.unsplash.com/photo-1600577916048-823c91488452?q=80&w=1974&auto=format&fit=crop')"
-            >
-                <div class="absolute inset-0 bg-white/70 backdrop-blur-sm"></div>
+        <section id="home" class="relative h-screen flex items-center justify-center text-white text-center bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1661281186102-ddb81b7c4ca3?q=80&w=1180&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');">
+            <div class="absolute inset-0 bg-primary opacity-60"></div>
+            <div class="relative z-10 p-6 fade-in visible">
+                <h1 class="text-4xl md:text-6xl font-serif mb-4">PENGACARATERDEKAT.COM.COM</h1>
+                <p class="text-lg md:text-xl max-w-3xl mx-auto">Memberikan Solusi Hukum Luar Biasa dengan Integritas Tanpa Kompromi.</p>
             </div>
+        </section>
 
-            <div class="container mx-auto px-6 relative z-10">
-                <div class="max-w-2xl">
-                    <h1 class="text-5xl md:text-7xl font-extrabold font-serif leading-tight">
-                        
-                    Layanan Hukum Profesional di Indonesia
-                    </h1>
-                    <p class="mt-6 text-lg text-gray-700 leading-relaxed">
-                        Mitra hukum terpercaya untuk bisnis dan individu. Kami memberikan solusi hukum profesional dengan pendekatan yang humanis dan strategis untuk klien di seluruh Indonesia.
-                    </p>
-                    <div class="mt-10">
-                        <button class="bg-white text-brand-blue font-bold py-4 px-8 border border-gray-200 rounded-md shadow-lg hover:shadow-xl hover:bg-gray-50 transition-all duration-300 transform hover:-translate-y-1">
-                            Konsultasi Gratis
-                        </button>
+        <!-- Achievements Section -->
+        <section id="achievements" class="py-16 bg-surface">
+            <div class="container mx-auto px-6 text-center">
+                <h2 class="text-3xl font-serif mb-12 underline-gold">Pencapaian Kami</h2>
+                <div class="grid grid-cols-2 md:grid-cols-5 gap-8 items-center">
+                    <img src="https://i.ibb.co/6y405J9/legal500.png" alt="Legal 500" class="mx-auto grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300">
+                    <img src="https://i.ibb.co/P9tLFCp/global-law.png" alt="Global Law Experts" class="mx-auto grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300">
+                    <img src="https://i.ibb.co/6y405J9/legal500.png" alt="Legal 500 2014" class="mx-auto grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300">
+                    <img src="https://i.ibb.co/P9tLFCp/global-law.png" alt="Global Law Experts Recommended" class="mx-auto grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300">
+                    <img src="https://i.ibb.co/6y405J9/legal500.png" alt="Legal 500 2013" class="mx-auto col-span-2 md:col-span-1 grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300">
+                </div>
+            </div>
+        </section>
+
+        <!-- About Us Section -->
+        <section id="about" class="py-20">
+            <div class="container mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center">
+                <div class="fade-in">
+                    <h2 class="text-3xl font-serif mb-6 underline-gold">Tentang Kami</h2>
+                    <p class="text-text-secondary mb-4"><strong>PENGACARATERDEKAT.COM</strong>, adalah salah satu firma hukum dengan pertumbuhan tercepat di Indonesia. Kami menyediakan layanan hukum yang komprehensif untuk perusahaan dan perorangan ("Klien").</p>
+                    <p class="text-text-secondary mb-6">Visi kami adalah menjadi salah satu firma hukum terbesar di Indonesia dan selalu memperkaya serta memperbarui pengetahuan kami untuk melayani Klien kami dengan nasihat hukum terbaik.</p>
+                    <a href="#contact" class="inline-block bg-primary text-white py-3 px-6 rounded-md hover:bg-secondary transition-colors text-sm font-bold">Hubungi Kami</a>
+                </div>
+                <div class="fade-in">
+                    <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTd8fGxhd3xlbnwwfHwwfHx8Mg%3D%3D" alt="Office meeting" class=" shadow-2xl w-full h-auto object-cover">
+                </div>
+            </div>
+        </section>
+        
+        <!-- Philosophy Section -->
+        <section id="philosophy" class="py-20 bg-surface">
+            <div class="container mx-auto px-6 text-center">
+                <h2 class="text-3xl font-serif mb-12 underline-gold">Filosofi Kami</h2>
+                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <div class="p-8 bg-white  shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 fade-in">
+                        <div class="text-secondary text-4xl mb-4"><i class="fas fa-gavel"></i></div>
+                        <h3 class="font-serif text-xl mb-2">Pengalaman</h3>
+                        <p class="text-text-secondary text-sm">Kami berpengalaman dalam hukum korporat dan komersial, litigasi komersial, dan berbagai masalah hukum lainnya.</p>
                     </div>
-                    <div class="mt-16 flex space-x-12 items-center text-left">
-                        <div class="text-center">
-                            <p class="text-4xl font-bold font-serif">15+</p>
-                            <p class="text-sm text-gray-600 tracking-wide">Tahun Pengalaman</p>
-                        </div>
-                        <div class="text-center">
-                            <p class="text-4xl font-bold font-serif">500+</p>
-                            <p class="text-sm text-gray-600 tracking-wide">Kasus Selesai</p>
-                        </div>
-                        <div class="text-center">
-                            <p class="text-4xl font-bold font-serif">1000+</p>
-                            <p class="text-sm text-gray-600 tracking-wide">Klien Terpercaya</p>
-                        </div>
+                    <div class="p-8 bg-white  shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 fade-in" style="transition-delay: 100ms;">
+                        <div class="text-secondary text-4xl mb-4"><i class="fas fa-shield-alt"></i></div>
+                        <h3 class="font-serif text-xl mb-2">Anti Suap</h3>
+                        <p class="text-text-secondary text-sm">Kami beroperasi dengan pendekatan tanpa toleransi terhadap penyuapan dan korupsi, memastikan praktik etis dalam semua urusan.</p>
+                    </div>
+                    <div class="p-8 bg-white  shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 fade-in" style="transition-delay: 200ms;">
+                        <div class="text-secondary text-4xl mb-4"><i class="fas fa-lock"></i></div>
+                        <h3 class="font-serif text-xl mb-2">Kerahasiaan</h3>
+                        <p class="text-text-secondary text-sm">Kerahasiaan informasi Klien adalah prioritas kami. Kami menjaga standar tertinggi untuk melindungi informasi Anda.</p>
+                    </div>
+                    <div class="p-8 bg-white  shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 fade-in" style="transition-delay: 300ms;">
+                        <div class="text-secondary text-4xl mb-4"><i class="fas fa-bolt"></i></div>
+                        <h3 class="font-serif text-xl mb-2">Respon Cepat</h3>
+                        <p class="text-text-secondary text-sm">Kami memahami bahwa kebutuhan Klien memerlukan nasihat menyeluruh, yang disampaikan dengan cepat dan akurat.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Our Legal Services -->
-        <section class="py-20 bg-gray-50">
+        <!-- Practice Areas Section -->
+        <section id="practice-areas" class="py-20">
             <div class="container mx-auto px-6">
-                <div class="text-center">
-                    <h2 class="text-4xl font-bold font-serif text-brand-blue">Layanan Hukum Kami</h2>
-                    <p class="mt-4 text-gray-600">Solusi hukum komprehensif yang disesuaikan dengan kebutuhan Anda</p>
-                </div>
-                <div class="mt-16 grid md:grid-cols-1 lg:grid-cols-1 gap-8">
-                    <!-- Service Card 1 -->
-                    <div class="bg-white p-8 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">
-                        <div class="bg-blue-100 text-brand-blue rounded-full w-16 h-16 flex items-center justify-center">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                            </svg>
+                <h2 class="text-3xl font-serif mb-12 text-center underline-gold">Area Praktik Kami</h2>
+                <div class="flex flex-col lg:flex-row gap-8 min-h-[400px]">
+                    <div class="lg:w-1/3 flex flex-col border-r border-gray-200 fade-in">
+                        <button class="practice-tab active text-left p-4 font-semibold border-l-4 border-secondary bg-surface" data-target="corporate">Korporat & Komersial</button>
+                        <button class="practice-tab text-left p-4 font-semibold border-l-4 border-transparent hover:bg-surface" data-target="litigation">Penyelesaian Sengketa & Litigasi</button>
+                        <button class="practice-tab text-left p-4 font-semibold border-l-4 border-transparent hover:bg-surface" data-target="labor">Ketenagakerjaan & Imigrasi</button>
+                        <button class="practice-tab text-left p-4 font-semibold border-l-4 border-transparent hover:bg-surface" data-target="ip">Hak Kekayaan Intelektual</button>
+                        <button class="practice-tab text-left p-4 font-semibold border-l-4 border-transparent hover:bg-surface" data-target="debt">Pemulihan Utang/Penagihan</button>
+                    </div>
+                    <div class="lg:w-2/3 p-4 fade-in" style="transition-delay: 200ms;">
+                        <div id="corporate" class="practice-content">
+                            <h3 class="font-serif text-2xl mb-4">Korporat & Komersial</h3>
+                            <p class="text-text-secondary">Kami memberikan advokasi yang superior dan tanpa henti. Intervensi awal kami seringkali menghasilkan penyelesaian yang dinegosiasikan. Namun, kami juga secara rutin menggunakan mediasi, arbitrase modern, dan bentuk-bentuk Penyelesaian Sengketa Alternatif (ADR) lainnya untuk mencapai tujuan Klien kami.</p>
                         </div>
-                        <h3 class="font-serif text-xl font-bold mt-6 text-brand-blue">Layanan Kami</h3>
-                        <p class="mt-2 text-gray-600">Expert guidance on business formation, mergers, acquisitions, and corporate governance matters for companies of all sizes.</p>
-                        <a href="/layanan.html" class="mt-6 text-brand-blue font-bold inline-block hover:underline">Learn More →</a>
+                        <div id="litigation" class="practice-content hidden">
+                            <h3 class="font-serif text-2xl mb-4">Penyelesaian Sengketa & Litigasi</h3>
+                            <p class="text-text-secondary">Firma kami memiliki rekam jejak keberhasilan di ruang sidang. Kami mewakili Klien mulai dari tingkat Pengadilan Negeri, Pengadilan Tinggi, hingga Mahkamah Agung dalam berbagai bidang hukum, memastikan advokasi yang gigih dan negosiasi yang terampil.</p>
+                        </div>
+                        <div id="labor" class="practice-content hidden">
+                            <h3 class="font-serif text-2xl mb-4">Ketenagakerjaan & Imigrasi</h3>
+                            <p class="text-text-secondary">Kami memberikan nasihat tentang semua aspek hukum ketenagakerjaan, mulai dari negosiasi kontrak hingga sengketa pemutusan hubungan kerja, dan membimbing Klien melalui proses imigrasi yang kompleks untuk tenaga kerja asing.</p>
+                        </div>
+                        <div id="ip" class="practice-content hidden">
+                            <h3 class="font-serif text-2xl mb-4">Hak Kekayaan Intelektual</h3>
+                            <p class="text-text-secondary">Kami membantu Klien melindungi aset intelektual mereka yang berharga, termasuk merek dagang, paten, dan hak cipta, melalui pendaftaran, lisensi, dan tindakan penegakan hukum.</p>
+                        </div>
+                        <div id="debt" class="practice-content hidden">
+                            <h3 class="font-serif text-2xl mb-4">Pemulihan Utang/Penagihan</h3>
+                            <p class="text-text-secondary">Firma kami menawarkan layanan pemulihan utang yang efektif dan etis, menggunakan strategi hukum untuk memastikan penagihan piutang yang tertunda sambil menjaga hubungan bisnis.</p>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Why Choose Us -->
-        <section class="py-20 bg-white">
+        <!-- Team Section -->
+        <section id="team" class="py-20 bg-surface">
             <div class="container mx-auto px-6">
-                <div class="grid lg:grid-cols-2 gap-16 items-center">
-                    <div>
-                        <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?q=80&w=2070&auto=format&fit=crop" alt="A team of legal professionals" class="rounded-lg shadow-xl w-full h-auto object-cover">
+                <h2 class="text-3xl font-serif mb-12 text-center underline-gold">Temui Tim Kami</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <div class="team-member text-center fade-in">
+                        <div class="relative overflow-hidden  shadow-lg mb-4">
+                            <img src="https://www.pngkey.com/png/detail/349-3499617_person-placeholder-person-placeholder.png" alt="Yudianta Medio N. Simbolon" class="w-full h-80 object-cover transform hover:scale-110 transition-transform duration-500">
+                        </div>
+                        <h3 class="font-serif text-xl">Yudianta Medio N. Simbolon</h3>
+                        <p class="text-secondary font-semibold">Partner Pendiri</p>
                     </div>
-                    <div>
-                        <h2 class="text-4xl font-bold font-serif text-brand-blue">Kenapa  Pengacaraterdekat.com?</h2>
-                        <p class="mt-4 text-gray-700 leading-relaxed">Kami menggabungkan keahlian hukum yang mendalam dengan layanan yang dipersonalisasi untuk memberikan hasil yang luar biasa bagi klien kami di seluruh Indonesia.</p>
-                        <div class="mt-8 space-y-6">
-                            <div class="flex items-start">
-                                <div class="flex-shrink-0 w-12 h-12 bg-blue-100 text-brand-blue rounded-full flex items-center justify-center">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-                                </div>
-                                <div class="ml-4">
-                                    <h3 class="font-bold text-lg text-brand-blue">Tim Hukum Berpengalaman</h3>
-                                    <p class="text-gray-600 mt-1">Mitra senior kami memiliki lebih dari 15 tahun pengalaman di bidang hukum Indonesia dengan keahlian khusus di berbagai bidang hukum.</p>
-                                </div>
-                            </div>
-                             <div class="flex items-start">
-                                <div class="flex-shrink-0 w-12 h-12 bg-blue-100 text-brand-blue rounded-full flex items-center justify-center">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-                                </div>
-                                <div class="ml-4">
-                                    <h3 class="font-bold text-lg text-brand-blue">Track Record</h3>
-                                    <p class="text-gray-600 mt-1">Berhasil menangani lebih dari 500 kasus dengan tingkat keberhasilan 95%, mendapatkan kepercayaan dari individu dan perusahaan.</p>
-                                </div>
-                            </div>
-                             <div class="flex items-start">
-                                <div class="flex-shrink-0 w-12 h-12 bg-blue-100 text-brand-blue rounded-full flex items-center justify-center">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-                                </div>
-                                <div class="ml-4">
-                                    <h3 class="font-bold text-lg text-brand-blue">Bantuan Hukum 24/7</h3>
-                                    <p class="text-gray-600 mt-1">Layanan konsultasi 24 jam untuk masalah hukum yang mendesak dengan perwakilan layanan klien yang berdedikasi.</p>
-                                </div>
-                            </div>
+                    <div class="team-member text-center fade-in" style="transition-delay: 100ms;">
+                        <div class="relative overflow-hidden  shadow-lg mb-4">
+                            <img src="https://www.pngkey.com/png/detail/349-3499617_person-placeholder-person-placeholder.png" alt="Meitha Wila Roseyani" class="w-full h-80 object-cover transform hover:scale-110 transition-transform duration-500">
                         </div>
-                        <div class="mt-10 bg-gray-100 p-6 rounded-lg">
-                            <h4 class="font-bold text-brand-blue">Sertifikasi Profesional</h4>
-                            <p class="mt-2 text-gray-600 text-sm">Licensed by Indonesian Bar Association • Member of International Bar Association • ISO 9001:2015 Certified</p>
+                        <h3 class="font-serif text-xl">Meitha Wila Roseyani</h3>
+                        <p class="text-secondary font-semibold">Of Counsel</p>
+                    </div>
+                    <div class="team-member text-center fade-in" style="transition-delay: 200ms;">
+                        <div class="relative overflow-hidden  shadow-lg mb-4">
+                            <img src="https://www.pngkey.com/png/detail/349-3499617_person-placeholder-person-placeholder.png" alt="Krisnawati Dwi Safitri" class="w-full h-80 object-cover transform hover:scale-110 transition-transform duration-500">
                         </div>
+                        <h3 class="font-serif text-xl">Krisnawati Dwi Safitri</h3>
+                        <p class="text-secondary font-semibold">Associate</p>
+                    </div>
+                    <div class="team-member text-center fade-in" style="transition-delay: 300ms;">
+                        <div class="relative overflow-hidden  shadow-lg mb-4">
+                            <img src="https://www.pngkey.com/png/detail/349-3499617_person-placeholder-person-placeholder.png" alt="Petrus Richard Sianturi" class="w-full h-80 object-cover transform hover:scale-110 transition-transform duration-500">
+                        </div>
+                        <h3 class="font-serif text-xl">Petrus Richard Sianturi</h3>
+                        <p class="text-secondary font-semibold">Of Counsel</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Get Legal Consultation -->
-        <section class="py-20 bg-gray-50">
+        <!-- Contact Section -->
+        <section id="contact" class="py-20 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1505547828843-176834e42154?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');">
             <div class="container mx-auto px-6">
-                <div class="grid lg:grid-cols-5 gap-12">
-                    <div class="lg:col-span-3">
-                        <h2 class="text-4xl font-bold font-serif text-brand-blue">Dapatkan Konsultasi Hukum</h2>
-                        <p class="mt-4 text-gray-700">Jadwalkan konsultasi gratis dengan tim hukum kami yang berpengalaman. Kami siap membantu Anda mengatasi masalah hukum yang rumit.</p>
-                        <form class="mt-8 space-y-6">
-                            <div class="grid sm:grid-cols-2 gap-6">
-                                <div>
-                                    <label for="full-name" class="block text-sm font-medium text-gray-700">Nama Lengkap</label>
-                                    <input type="text" name="full-name" id="full-name" placeholder="Nama Lengkap" class="mt-1 block w-full px-3 py-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-brand-blue focus:border-brand-blue sm:text-sm">
-                                </div>
-                                <div>
-                                    <label for="phone-number" class="block text-sm font-medium text-gray-700">Nomor Telpon</label>
-                                    <input type="tel" name="phone-number" id="phone-number" placeholder="Nomor telepon/WhatsApp" class="mt-1 block w-full px-3 py-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-brand-blue focus:border-brand-blue sm:text-sm">
-                                </div>
-                            </div>
-                            <div>
-                                <label for="email" class="block text-sm font-medium text-gray-700">Alamat Email</label>
-                                <input type="email" name="email" id="email" placeholder="Masukkan alamat Email" class="mt-1 block w-full px-3 py-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-brand-blue focus:border-brand-blue sm:text-sm">
-                            </div>
-                            <div>
-                                <label for="legal-service" class="block text-sm font-medium text-gray-700">Layanan Hukum yang Dibutuhkan</label>
-                                <select id="legal-service" name="legal-service" class="mt-1 block w-full px-3 py-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-brand-blue focus:border-brand-blue sm:text-sm">
-                                    <option>Pilih Layanan</option>
-                                    <option>Layanan Litigasi</option>
-                                    <option>Layanan Non-Litigasi </option>
-                                    <option>Layanan Hukum Lainnya</option>
-                                </select>
-                            </div>
-                            <div>
-                                <label for="message" class="block text-sm font-medium text-gray-700">Pesan</label>
-                                <textarea id="message" name="message" rows="4" placeholder="Jelaskan masalah Anda" class="mt-1 block w-full px-3 py-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-brand-blue focus:border-brand-blue sm:text-sm"></textarea>
-                            </div>
-                            <div>
-                                <button type="submit" class="w-full flex justify-center py-3 px-4 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-brand-blue hover:bg-brand-blue-light focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-brand-blue transition-colors">
-                                    Konsultasi Sekarang
-                                </button>
-                            </div>
-                        </form>
-                    </div>
-                    <div class="lg:col-span-2">
-                        <div class="bg-white p-8 rounded-lg shadow-md h-full">
-                            <h3 class="font-serif text-2xl font-bold text-brand-blue">Informasi Kontak</h3>
-                            <div class="mt-6 space-y-6 text-gray-700">
-                                <div class="flex items-start">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-brand-blue flex-shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                                    </svg>
-                                    <div class="ml-4">
-                                        <h4 class="font-bold text-gray-800">Alamat Kantor</h4>
-                                        <p>Jl. Sudirman No. 123, Jakarta Pusat</p>
-                                        <p>DKI Jakarta 10220, Indonesia</p>
-                                    </div>
-                                </div>
-                                <div class="flex items-start">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-brand-blue flex-shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-                                    </svg>
-                                    <div class="ml-4">
-                                        <h4 class="font-bold text-gray-800">Telepon</h4>
-                                        <p>+62 21 5555 0123</p>
-                                        <p>+62 21 5555 0124</p>
-                                    </div>
-                                </div>
-                                <div class="flex items-start">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-brand-blue flex-shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                                    </svg>
-                                    <div class="ml-4">
-                                        <h4 class="font-bold text-gray-800">Email</h4>
-                                        <p>info@pengacaraterdekat.com.id</p>
-                                        <p>consultation@pengacaraterdekat.com.id</p>
-                                    </div>
-                                </div>
-                                <div class="flex items-start">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-brand-blue flex-shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                    </svg>
-                                    <div class="ml-4">
-                                        <h4 class="font-bold text-gray-800">Jam Operasional</h4>
-                                        <p>Senin - Jumat: 09.00 - 18.00 WIB</p>
-                                        <p>Sabtu: 09.00 - 13.00 WIB</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="mt-8 rounded-lg overflow-hidden shadow-md">
-                                <img src="https://i.imgur.com/3Q0j2yB.png" alt="Peta lokasi kantor" class="w-full h-auto object-cover">
+                <div class="max-w-4xl mx-auto bg-white/90 p-10  shadow-2xl backdrop-blur-sm">
+                    <h2 class="text-3xl font-serif mb-8 text-center underline-gold">Hubungi Kami</h2>
+                    <div class="grid md:grid-cols-2 gap-8 text-text-secondary">
+                        <div>
+                            <h3 class="font-serif text-xl text-primary mb-4">Kantor Kami</h3>
+                            <p class="mb-2"><i class="fas fa-map-marker-alt w-6 text-secondary"></i> South Quarter Tower A, Lantai 17<br><span class="ml-6">Jl. RA Kartini Kav. 8, Cilandak Barat<br>Jakarta Selatan 12430, Indonesia</span></p>
+                            <p class="mb-2"><i class="fas fa-phone w-6 text-secondary"></i> +6221 22722227</p>
+                            <p class="mb-2"><i class="fas fa-envelope w-6 text-secondary"></i> info@PENGACARATERDEKAT.COM</p>
+                        </div>
+                        <div>
+                            <h3 class="font-serif text-xl text-primary mb-4">Tetap Terhubung</h3>
+                            <p class="mb-6">Untuk konsultasi atau pertanyaan lebih lanjut, silakan hubungi kami. Kami siap membantu Anda.</p>
+                            <div class="flex space-x-4 text-secondary text-2xl">
+                                <a href="https://www.instagram.com/simbolonandpartnerslawfirm/" class="hover:text-primary transition-colors"><i class="fab fa-instagram"></i></a>
+                                <a href="https://www.youtube.com/@simbolonandpartners/" class="hover:text-primary transition-colors"><i class="fab fa-youtube"></i></a>
+                                <a href="https://www.tiktok.com/@simbolonpartners" class="hover:text-primary transition-colors"><i class="fab fa-tiktok"></i></a>
+                                <a href="#" class="hover:text-primary transition-colors"><i class="fab fa-linkedin"></i></a>
                             </div>
                         </div>
                     </div>
-
                 </div>
             </div>
         </section>
-
     </main>
     
     <!-- Footer -->
-    <footer class="bg-brand-blue text-white">
-      <div class="container mx-auto px-6 pt-16 pb-8">
-        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-12">
-          <!-- Column 1: About -->
-          <div>
-            <h3 class="text-2xl font-bold font-serif">Pengacaraterdekat.com Indonesia</h3>
-            <p class="mt-4 text-gray-300 text-sm">Mitra hukum terpercaya untuk bisnis dan individu. Kami memberikan solusi hukum profesional dengan pendekatan yang humanis dan strategis untuk klien di seluruh Indonesia.</p>
-            <div class="mt-6 flex space-x-4">
-              <a href="#" class="text-gray-300 hover:text-white transition-colors" aria-label="Facebook"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v2.385z"/></svg></a>
-              <a href="#" class="text-gray-300 hover:text-white transition-colors" aria-label="Twitter"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616v.064c0 2.298 1.634 4.212 3.793 4.649-.65.176-1.336.213-2.033.188.606 1.956 2.358 3.246 4.394 3.282-1.78 1.487-4.017 2.28-6.465 2.15C5.125 21.604 7.028 22 9.005 22c7.522 0 12.015-6.533 11.493-12.836C22.425 8.29 23.31 7.14 24 5.776z"/></svg></a>
-              <a href="#" class="text-gray-300 hover:text-white transition-colors" aria-label="LinkedIn"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M4.98 3.5c0 1.381-1.11 2.5-2.48 2.5s-2.48-1.119-2.48-2.5c0-1.38 1.11-2.5 2.48-2.5s2.48 1.12 2.48 2.5zm.02 4.5h-5v16h5v-16zm7.982 0h-4.98v16h4.98v-8.396c0-2.002 1.808-2.002 1.808 0v8.396h4.98v-10.131c0-4.87-3.364-5.142-4.87-2.403l-.01.018v-2.484h-1.988v14.004z"/></svg></a>
-            </div>
-          </div>
-          <!-- Column 2: Quick Links -->
-          <div>
-            <h4 class="font-bold text-lg">Quick Links</h4>
-            <ul class="mt-4 space-y-2 text-sm">
-              <li><a href="#" class="text-gray-300 hover:text-white transition-colors">About Us</a></li>
-              <li><a href="/layanan.html" class="text-gray-300 hover:text-white transition-colors">Our Services</a></li>
-              <li><a href="#" class="text-gray-300 hover:text-white transition-colors">Case Studies</a></li>
-              <li><a href="#" class="text-gray-300 hover:text-white transition-colors">Legal Resources</a></li>
-              <li><a href="#" class="text-gray-300 hover:text-white transition-colors">Careers</a></li>
-              <li><a href="#" class="text-gray-300 hover:text-white transition-colors">Contact</a></li>
-            </ul>
-          </div>
-          <!-- Column 3: Contact Details -->
-          <div>
-            <h4 class="font-bold text-lg">Contact Details</h4>
-            <ul class="mt-4 space-y-3 text-sm">
-              <li class="flex items-start">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 flex-shrink-0 mr-3 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
-                <span class="text-gray-300">Jl. Sudirman No. 123, Jakarta Pusat</span>
-              </li>
-              <li class="flex items-start">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 flex-shrink-0 mr-3 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" /></svg>
-                <span class="text-gray-300">+62 21 5555 0123</span>
-              </li>
-              <li class="flex items-start">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 flex-shrink-0 mr-3 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
-                <span class="text-gray-300">info@Pengacaraterdekat.com.id</span>
-              </li>
-            </ul>
-          </div>
-          <!-- Column 4: Professional Associations -->
-          <div>
-            <h4 class="font-bold text-lg">Professional Associations</h4>
-            <div class="mt-4 flex space-x-4">
-              <div class="w-12 h-12 bg-white rounded-full flex items-center justify-center" title="Association 1">
-                <svg class="w-8 h-8 text-brand-blue" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" /></svg>
-              </div>
-              <div class="w-12 h-12 bg-white rounded-full flex items-center justify-center" title="Association 2">
-                <svg class="w-8 h-8 text-brand-blue" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2h10a2 2 0 002-2v-1a2 2 0 012-2h1.945M7.707 4.293l1.414-1.414a1 1 0 011.414 0l1.414 1.414M2 11h20M12 17v5" /></svg>
-              </div>
-            </div>
-          </div>
+    <footer class="bg-primary text-white/70 py-8">
+        <div class="container mx-auto px-6 text-center text-sm">
+            <p>&copy; 2024 PENGACARATERDEKAT.COM.COM. Hak Cipta Dilindungi.</p>
+            <p class="text-xs text-white/40 mt-2">Situs web ini adalah hasil kloning dan peningkatan desain untuk tujuan demonstrasi.</p>
         </div>
-        <div class="mt-12 border-t border-brand-blue-light pt-8 text-center text-sm text-gray-400">
-          <p>&copy; 2024 Pengacaraterdekat.com Indonesia. All rights reserved. | <a href="#" class="hover:underline">Privacy Policy</a> | <a href="#" class="hover:underline">Terms of Service</a></p>
-        </div>
-      </div>
     </footer>
+    
+    <!-- Scroll to Top Button -->
+    <button id="to-top-button" class="hidden fixed bottom-5 right-5 bg-secondary text-white w-12 h-12 rounded-full shadow-lg hover:bg-primary transition-colors focus:outline-none">
+        <i class="fas fa-arrow-up"></i>
+    </button>
 
     <script>
-      document.addEventListener('DOMContentLoaded', () => {
-        const langIdButton = document.getElementById('lang-id');
-        const langEnButton = document.getElementById('lang-en');
+        document.addEventListener('DOMContentLoaded', () => {
+            // Mobile Menu
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+            // Close mobile menu when a link is clicked
+            mobileMenu.addEventListener('click', (e) => {
+              if (e.target.tagName === 'A') {
+                mobileMenu.classList.add('hidden');
+              }
+            });
 
-        const setActiveLang = (lang) => {
-          if (lang === 'ID') {
-            langIdButton.classList.add('bg-white', 'text-brand-blue');
-            langIdButton.classList.remove('text-white');
-            langEnButton.classList.remove('bg-white', 'text-brand-blue');
-            langEnButton.classList.add('text-white');
-          } else { // EN
-            langEnButton.classList.add('bg-white', 'text-brand-blue');
-            langEnButton.classList.remove('text-white');
-            langIdButton.classList.remove('bg-white', 'text-brand-blue');
-            langIdButton.classList.add('text-white');
-          }
-        };
+            // Scroll to Top Button
+            const toTopButton = document.getElementById('to-top-button');
+            window.addEventListener('scroll', () => {
+                if (window.pageYOffset > 300) {
+                    toTopButton.classList.remove('hidden');
+                } else {
+                    toTopButton.classList.add('hidden');
+                }
+            });
+            toTopButton.addEventListener('click', () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
 
-        langIdButton.addEventListener('click', () => setActiveLang('ID'));
-        langEnButton.addEventListener('click', () => setActiveLang('EN'));
-      });
+            // Practice Area Tabs
+            const tabs = document.querySelectorAll('.practice-tab');
+            const contents = document.querySelectorAll('.practice-content');
+            tabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    tabs.forEach(t => {
+                        t.classList.remove('active', 'border-secondary', 'bg-surface');
+                        t.classList.add('border-transparent');
+                    });
+                    tab.classList.add('active', 'border-secondary', 'bg-surface');
+                    tab.classList.remove('border-transparent');
+                    
+                    const targetId = tab.dataset.target;
+                    contents.forEach(content => {
+                        if (content.id === targetId) {
+                            content.classList.remove('hidden');
+                        } else {
+                            content.classList.add('hidden');
+                        }
+                    });
+                });
+            });
+
+            // Fade-in animations
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            document.querySelectorAll('.fade-in').forEach(el => {
+                observer.observe(el);
+            });
+        });
     </script>
-  </body>
+</body>
 </html>
