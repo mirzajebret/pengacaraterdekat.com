@@ -1,3 +1,56 @@
+// --- LANGUAGE SWITCHER LOGIC ---
+
+// Sets the language of the page
+const setLanguage = (lang) => {
+    // Save preference to local storage
+    localStorage.setItem('language', lang);
+
+    // Update the HTML lang attribute for SEO and accessibility
+    document.documentElement.lang = lang;
+
+    // Translate all elements with the data-translate attribute
+    document.querySelectorAll('[data-translate]').forEach(element => {
+        const key = element.getAttribute('data-translate');
+        if (translations[key] && translations[key][lang]) {
+            element.innerHTML = translations[key][lang];
+        }
+    });
+
+    // Translate the page title
+    const pageKey = document.body.dataset.pageKey;
+    if (pageKey && translations[pageKey] && translations[pageKey][lang]) {
+        document.title = translations[pageKey][lang];
+    }
+    
+    // Translate the meta description tag
+    const metaDescElement = document.querySelector('meta[name="description"]');
+    if (metaDescElement) {
+        const metaDescKey = metaDescElement.dataset.translate;
+         if (metaDescKey && translations[metaDescKey] && translations[metaDescKey][lang]) {
+            metaDescElement.setAttribute('content', translations[metaDescKey][lang]);
+        }
+    }
+
+    // Update active language button style
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+        if (btn.dataset.lang === lang) {
+            btn.classList.add('font-bold', 'text-white');
+            btn.classList.remove('opacity-70');
+        } else {
+            btn.classList.remove('font-bold', 'text-white');
+            btn.classList.add('opacity-70');
+        }
+    });
+};
+
+// Initializes the language on page load
+const initializeLanguage = () => {
+    // Get saved language or default to Indonesian ('id')
+    const savedLang = localStorage.getItem('language') || 'id';
+    setLanguage(savedLang);
+};
+
+
 // This function contains all the logic that depends on the DOM being fully ready, including loaded components
 function initializeApp() {
     // Mobile Menu
@@ -100,6 +153,16 @@ function initializeApp() {
     document.querySelectorAll('.fade-in').forEach(el => {
         observer.observe(el);
     });
+
+    // Setup language switcher event listeners
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            const lang = e.target.dataset.lang;
+            setLanguage(lang);
+        });
+    });
+    // Set the initial language for the page
+    initializeLanguage();
 }
 
 // Function to handle page transitions
